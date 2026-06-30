@@ -12,11 +12,15 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --cream: #FFF7E8;
+      --bg: #FFFFFF;
+      --panel: #F6F6F4;
       --pink: #F7467A;
       --yellow: #E4BD54;
+      --gold: #F0B300;
       --green: #7DAA4D;
+      --green-vivid: #4C9A2A;
       --blue: #9DD9F3;
+      --babyblue: #DDF1FB;
       --text: #1A1A1A;
       --muted: #6B7280;
       --faint: #9CA3AF;
@@ -24,43 +28,50 @@
       --white: #fff;
     }
 
+    html, body { height: 100%; }
+
     body {
       font-family: 'Source Sans 3', system-ui, sans-serif;
       color: var(--text);
-      background: var(--cream);
+      background: var(--bg);
       min-height: 100vh;
+      display: flex;
+      flex-direction: column;
     }
 
+    main { flex: 1 0 auto; }
+
     /* ── Spectrum bar ── */
-    .spectrum { display: flex; height: 4px; }
+    .spectrum { display: flex; height: 4px; flex-shrink: 0; }
     .spectrum div { flex: 1; }
 
     /* ── Header ── */
     .hdr {
       background: var(--white);
       border-bottom: 1.5px solid var(--border);
-      padding: 13px 32px;
+      padding: 28px 32px 22px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 18px;
+    }
+    .logo-square {
+      width: 100%;
+      max-width: 300px;
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 12px;
+      justify-content: center;
     }
-    .logo {
-      font-family: 'DM Serif Display', Georgia, serif;
-      font-size: 1.5rem;
-      color: var(--text);
-      display: flex;
-      align-items: center;
-      gap: 8px;
+    .logo-square img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
     }
-    .logo-bars { display: flex; gap: 2px; }
-    .lb { width: 5px; height: 20px; border-radius: 2px; }
-    .nav { display: flex; gap: 5px; flex-wrap: wrap; }
+    .nav { display: flex; gap: 7px; flex-wrap: wrap; justify-content: center; }
     .ntag {
-      padding: 3px 9px;
-      border-radius: 4px;
-      font-size: .6rem;
+      padding: 5px 12px;
+      border-radius: 5px;
+      font-size: .72rem;
       font-weight: 700;
       letter-spacing: .08em;
       text-transform: uppercase;
@@ -77,7 +88,7 @@
       flex-wrap: wrap;
     }
     .api-label {
-      font-size: .72rem;
+      font-size: .78rem;
       font-weight: 700;
       letter-spacing: .07em;
       text-transform: uppercase;
@@ -91,23 +102,23 @@
       border: 1.5px solid var(--border);
       border-radius: 6px;
       font-family: 'Source Sans 3', sans-serif;
-      font-size: .84rem;
+      font-size: .9rem;
       color: var(--text);
-      background: var(--cream);
+      background: var(--panel);
       outline: none;
       transition: border-color .12s;
       letter-spacing: .04em;
     }
     .api-input:focus { border-color: var(--pink); }
     .api-hint {
-      font-size: .72rem;
+      font-size: .8rem;
       color: var(--faint);
-      line-height: 1.5;
+      line-height: 1.55;
     }
     .api-hint a { color: var(--pink); text-decoration: none; }
     .api-hint a:hover { text-decoration: underline; }
     .api-status {
-      font-size: .72rem;
+      font-size: .78rem;
       font-weight: 700;
       padding: 4px 10px;
       border-radius: 4px;
@@ -116,88 +127,100 @@
     .api-status.unset { background: #FDEDF2; color: #A0234A; }
 
     /* ── Main layout ── */
-    .hero { max-width: 720px; margin: 0 auto; padding: 48px 24px 32px; }
+    .hero { max-width: 1180px; margin: 0 auto; padding: 56px 48px 32px; }
     .eyebrow {
-      font-size: .6rem;
+      font-size: .68rem;
       font-weight: 700;
       letter-spacing: .14em;
       text-transform: uppercase;
       color: var(--pink);
-      margin-bottom: 12px;
+      margin-bottom: 14px;
     }
     .h1 {
       font-family: 'DM Serif Display', Georgia, serif;
-      font-size: 2.2rem;
+      font-size: 2.7rem;
       line-height: 1.18;
       letter-spacing: -.01em;
-      margin-bottom: 14px;
+      margin-bottom: 18px;
     }
     .sub {
-      font-size: .97rem;
+      font-size: 1.13rem;
       line-height: 1.65;
       color: var(--muted);
-      max-width: 520px;
-      margin-bottom: 36px;
+      max-width: 580px;
+      margin-bottom: 40px;
     }
 
     /* ── Input section ── */
-    .inp-sec { max-width: 720px; margin: 0 auto; padding: 0 24px 48px; }
+    .inp-sec { max-width: 1180px; margin: 0 auto; padding: 0 48px 48px; }
     .slabel {
-      font-size: .6rem;
+      font-size: .7rem;
       font-weight: 700;
       letter-spacing: .1em;
       text-transform: uppercase;
       color: var(--faint);
-      margin-bottom: 9px;
+      margin-bottom: 11px;
     }
-    .chips { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 18px; }
+    .chips { display: flex; flex-wrap: wrap; gap: 9px; margin-bottom: 22px; }
     .chip {
-      padding: 5px 13px;
+      padding: 7px 16px;
       border-radius: 100px;
       border: 1.5px solid var(--border);
       background: var(--white);
       font-family: 'Source Sans 3', sans-serif;
-      font-size: .76rem;
-      color: var(--text);
+      font-size: .87rem;
+      font-weight: 600;
       cursor: pointer;
       transition: border-color .12s, color .12s, background .12s;
       outline: none;
     }
-    .chip:hover { border-color: var(--pink); color: var(--pink); }
-    .chip.on { background: var(--pink); border-color: var(--pink); color: var(--white); }
+
+    /* Each example chip takes a color from the Prism logo */
+    .chip.c-pink   { border-color: var(--pink);   color: var(--pink); }
+    .chip.c-pink:hover,   .chip.c-pink.on   { background: var(--pink);   color: var(--white); }
+
+    .chip.c-yellow { border-color: var(--gold); color: #8A6D10; }
+    .chip.c-yellow:hover, .chip.c-yellow.on { background: var(--gold); color: var(--white); }
+
+    .chip.c-green  { border-color: var(--green);  color: #3F5E22; }
+    .chip.c-green:hover,  .chip.c-green.on  { background: var(--green);  color: var(--white); }
+
+    .chip.c-blue   { border-color: var(--blue);   color: #1A6080; }
+    .chip.c-blue:hover,   .chip.c-blue.on   { background: var(--blue);   color: var(--text); }
 
     .tarea {
       width: 100%;
-      min-height: 92px;
-      padding: 13px 15px;
+      min-height: 100px;
+      padding: 15px 17px;
       border: 1.5px solid var(--border);
       border-radius: 8px;
       font-family: 'Source Sans 3', sans-serif;
-      font-size: .91rem;
+      font-size: 1.02rem;
       line-height: 1.6;
       color: var(--text);
-      background: var(--white);
+      background: var(--babyblue);
       resize: vertical;
       outline: none;
-      margin-bottom: 13px;
+      margin-bottom: 15px;
       transition: border-color .12s;
     }
-    .tarea:focus { border-color: var(--pink); }
+    .tarea::placeholder { color: #5A8BA3; }
+    .tarea:focus { border-color: var(--green); }
 
     .abtn {
-      padding: 10px 24px;
-      background: var(--pink);
+      padding: 12px 26px;
+      background: #17C3B2;
       color: var(--white);
       border: none;
       border-radius: 6px;
       font-family: 'Source Sans 3', sans-serif;
-      font-size: .86rem;
+      font-size: .94rem;
       font-weight: 700;
       cursor: pointer;
       transition: background .12s, transform .1s;
     }
-    .abtn:hover:not(:disabled) { background: #D93568; transform: translateY(-1px); }
-    .abtn:disabled { opacity: .4; cursor: not-allowed; }
+    .abtn:hover:not(:disabled) { background: #129E90; transform: translateY(-1px); }
+    .abtn:disabled { opacity: .65; cursor: not-allowed; }
 
     .err {
       margin-top: 10px;
@@ -205,7 +228,7 @@
       background: #FDEDF2;
       border-left: 3px solid var(--pink);
       border-radius: 0 5px 5px 0;
-      font-size: .82rem;
+      font-size: .88rem;
       color: #A0234A;
     }
 
@@ -215,7 +238,7 @@
       align-items: center;
       gap: 10px;
       padding: 32px 0;
-      font-size: .84rem;
+      font-size: .9rem;
       color: var(--faint);
     }
     .dots { display: flex; gap: 4px; }
@@ -235,9 +258,9 @@
 
     /* ── Results ── */
     .res-sec {
-      max-width: 720px;
+      max-width: 1180px;
       margin: 0 auto;
-      padding: 34px 24px 56px;
+      padding: 34px 48px 56px;
       border-top: 1.5px solid var(--border);
     }
     .res-top {
@@ -250,10 +273,10 @@
     }
     .res-h2 {
       font-family: 'DM Serif Display', Georgia, serif;
-      font-size: 1.3rem;
+      font-size: 1.5rem;
       margin-bottom: 4px;
     }
-    .res-preview { font-size: .78rem; color: var(--faint); font-style: italic; }
+    .res-preview { font-size: .85rem; color: var(--faint); font-style: italic; }
 
     .fwtgl {
       padding: 6px 13px;
@@ -261,7 +284,7 @@
       border-radius: 6px;
       background: var(--white);
       font-family: 'Source Sans 3', sans-serif;
-      font-size: .67rem;
+      font-size: .72rem;
       font-weight: 700;
       letter-spacing: .06em;
       text-transform: uppercase;
@@ -281,7 +304,7 @@
       overflow: hidden;
     }
     .chead {
-      padding: 10px 17px;
+      padding: 11px 17px;
       border-bottom: 1.5px solid var(--border);
       display: flex;
       align-items: center;
@@ -296,18 +319,18 @@
       font-size: 14px;
     }
     .ctitle {
-      font-size: .6rem;
+      font-size: .65rem;
       font-weight: 700;
       letter-spacing: .1em;
       text-transform: uppercase;
     }
-    .cbody { padding: 15px 17px; display: flex; flex-direction: column; gap: 13px; }
+    .cbody { padding: 16px 17px; display: flex; flex-direction: column; gap: 14px; }
     .irow { display: flex; gap: 9px; align-items: flex-start; }
     .dtag {
       flex-shrink: 0;
       padding: 2px 7px;
       border-radius: 3px;
-      font-size: .56rem;
+      font-size: .6rem;
       font-weight: 700;
       letter-spacing: .07em;
       text-transform: uppercase;
@@ -315,21 +338,22 @@
       white-space: nowrap;
     }
     .iright { flex: 1; }
-    .itext { font-size: .88rem; line-height: 1.62; }
+    .itext { font-size: .96rem; line-height: 1.62; }
     .fwblk {
       display: none;
       margin-top: 8px;
       padding: 8px 10px 8px 11px;
-      background: var(--cream);
+      background: var(--panel);
       border-left: 3px solid;
       border-radius: 0 5px 5px 0;
     }
     .fwblk.vis { display: block; }
-    .fwname { font-size: .68rem; font-weight: 700; margin-bottom: 3px; }
-    .fwexp { font-size: .75rem; line-height: 1.55; color: var(--muted); }
+    .fwname { font-size: .72rem; font-weight: 700; margin-bottom: 3px; }
+    .fwexp { font-size: .8rem; line-height: 1.55; color: var(--muted); }
 
     /* ── Footer ── */
     .ftr {
+      flex-shrink: 0;
       background: var(--white);
       border-top: 1.5px solid var(--border);
       padding: 15px 32px;
@@ -339,12 +363,12 @@
       flex-wrap: wrap;
       gap: 10px;
     }
-    .ftr-p { font-size: .7rem; color: var(--faint); }
+    .ftr-p { font-size: .76rem; color: var(--faint); }
     .ftr-tags { display: flex; gap: 4px; }
     .ftr-tag {
       padding: 2px 7px;
       border-radius: 3px;
-      font-size: .56rem;
+      font-size: .6rem;
       font-weight: 700;
       letter-spacing: .07em;
       text-transform: uppercase;
@@ -361,16 +385,13 @@
     <div style="background:#9DD9F3"></div>
   </div>
 
+  <main>
+
   <!-- Header -->
   <header class="hdr">
-    <div class="logo">
-      <div class="logo-bars">
-        <div class="lb" style="background:#F7467A"></div>
-        <div class="lb" style="background:#E4BD54"></div>
-        <div class="lb" style="background:#7DAA4D"></div>
-        <div class="lb" style="background:#9DD9F3"></div>
-      </div>
-      Prism
+    <!-- Square logo space, top-middle of the page -->
+    <div class="logo-square">
+      <img src="images/prism-logo.png" alt="Prism logo">
     </div>
     <nav class="nav" aria-label="Disciplines">
       <span class="ntag" style="background:#FDEDF2;color:#A0234A">Behavioral Science</span>
@@ -426,11 +447,12 @@
   <section class="inp-sec">
     <p class="slabel">Try an example</p>
     <div class="chips" role="group" aria-label="Example scenarios">
-      <button class="chip" data-s="A city implements a $5 congestion charge to reduce downtown traffic, but public resistance remains high despite clear environmental benefits.">Congestion pricing</button>
-      <button class="chip" data-s="A community health program distributes free contraceptives but uptake remains low in rural areas despite extensive outreach campaigns.">Rural health uptake</button>
-      <button class="chip" data-s="A nonprofit offers free job training to formerly incarcerated individuals, but many do not complete the program despite wanting stable employment.">Re-entry job training</button>
-      <button class="chip" data-s="A public health campaign promotes childhood vaccination but hesitancy persists in communities with historically low institutional trust.">Vaccine hesitancy</button>
-      <button class="chip" data-s="A humanitarian aid organization struggles to mobilize local volunteers in conflict-affected communities, despite widespread acknowledgment of need.">Volunteer mobilization</button>
+      <button class="chip c-pink" data-s="A city implements a $5 congestion charge to reduce downtown traffic, but public resistance remains high despite clear environmental benefits.">Congestion pricing</button>
+      <button class="chip c-yellow" data-s="A community health program distributes free contraceptives but uptake remains low in rural areas despite extensive outreach campaigns.">Rural health uptake</button>
+      <button class="chip c-green" data-s="A nonprofit offers free job training to formerly incarcerated individuals, but many do not complete the program despite wanting stable employment.">Re-entry job training</button>
+      <button class="chip c-blue" data-s="A public health campaign promotes childhood vaccination but hesitancy persists in communities with historically low institutional trust.">Vaccine hesitancy</button>
+      <button class="chip c-pink" data-s="A humanitarian aid organization struggles to mobilize local volunteers in conflict-affected communities, despite widespread acknowledgment of need.">Volunteer mobilization</button>
+      <button class="chip c-yellow" data-s="A workplace wants to encourage greater cooperation and prosocial behavior between teams from different departments, but siloed thinking and self-interest are limiting collaboration.">Prosocial behavior</button>
     </div>
 
     <p class="slabel">Or describe your own scenario</p>
@@ -458,9 +480,11 @@
   <!-- Results injected here by JS -->
   <div id="results-area"></div>
 
+  </main>
+
   <!-- Footer -->
   <footer class="ftr">
-    <p class="ftr-p">Prism foregrounds empathy, social cooperation, prosocial behavior, and social cognition.</p>
+    <p class="ftr-p">&copy; 2026 Prism. Foregrounding empathy, social cooperation, prosocial behavior, and social cognition.</p>
     <div class="ftr-tags">
       <span class="ftr-tag" style="background:#FDEDF2;color:#A0234A">BS</span>
       <span class="ftr-tag" style="background:#E8F5FD;color:#1A6080">CS</span>
